@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.BitCoursDao">
+
+	<resultMap type="example.vo.BitCours" id="bitCoursMap">
+		<id column="cono" property="courseNo" />
+		<result column="titl" property="title" />
+		<result column="conts" property="contents" />
+		<result column="st_dt" property="startDate" />
+		<result column="ed_dt" property="endDate" />
+		<result column="qty" property="quantity" />
+		<result column="stat" property="statement" />
+		<result column="room" property="roomName" />
+		<result column="mgrno" property="managerNo" />
+		
+		<association property="bitMgrs"></association>
+	</resultMap>
+
+	<select id="selectList" resultMap="bitCoursMap" parameterType="map">
+		select cono, titl, conts, st_dt, ed_dt, qty, stat, room, mgrno
+		from bit_cours
+		<!-- 
+		<where>
+			<if test="title != null">title like concat('%', #{title}, '%')</if>
+			<if test="writer != null">and writer like concat('%', #{writer}, '%')</if>
+		</where>
+		-->
+		order by
+		<choose>
+			<when test="titleOrder == 'asc'">title asc</when>
+			<when test="titleOrder == 'desc'">title desc</when>
+			<when test="startDateOrder == 'asc'">startDate asc</when>
+			<when test="startDateOrder == 'desc'">startDate desc</when>
+			<when test="endDateOrder == 'asc'">endDate asc</when>
+			<when test="endDateOrder == 'desc'">endDate desc</when>
+			<when test="conoOrder == 'asc'">cono asc</when>
+			<otherwise>cono asc</otherwise>
+		</choose>
+		limit #{startIndex}, #{length}
+	</select>
+
+	<select id="selectOne" resultMap="bitCoursMap" parameterType="int">
+		select cono, titl, conts, st_dt, ed_dt, qty, stat, room, mgrno
+		from bit_cours
+		where cono = #{value}
+	</select>
+
+
+	<insert id="insert" parameterType="bitCours">
+		insert into bit_cours(titl, conts, st_dt, ed_dt, qty, stat, room)
+		values(#{title}, #{contents}, #{startDate}, #{endDate}, #{quantity},
+		#{statement}, #{roomName})
+	</insert>
+
+	<update id="update" parameterType="bitCours">
+		update bit_cours set
+		titl = #{title},
+		conts = #{contents},
+		st_dt = #{startDate},
+		ed_dt = #{endDate},
+		qty = #{quantity},
+		stat = #{statement},
+		room = #{roomName}
+		where cono=#{courseNo}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from bit_cours
+		where cono=#{value}
+	</delete>
+
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
