@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="subj_mods.dao.SubjModsDao">
+	<resultMap type="subjMod" id="subjModMap">
+		<id column="smno" property="smno" /> <!--PK 는 ID 나머지는 result -->
+	  <result column="conts" property="conts" />
+    <result column="titl" property="titl" />
+	</resultMap>
+
+	<select id="selectList" resultMap="subjModMap" parameterType="map">
+		select smno, titl, conts
+		from bit_subj_mods
+		limit #{startIndex}, #{length}
+	</select>
+
+	<select id="selectOne" parameterType="int" resultMap="subjModMap">
+		select smno,
+		titl, conts
+		from bit_subj_mods
+		where smno = #{value}
+	</select>
+
+	<insert id="insert" parameterType="subjMod">
+		insert into bit_subj_mods(titl,conts)
+		values (#{titl}, #{conts})
+	</insert>
+
+	<update id="update" parameterType="subjMod">
+		update bit_subj_mods set
+		titl=#{titl},
+		conts=#{conts}
+		where smno=#{smno}
+		
+		
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from bit_subj_mods where
+		smno=#{value}
+	</delete>
+
+
+</mapper>
