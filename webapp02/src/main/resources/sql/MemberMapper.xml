@@ -6,7 +6,7 @@
   <resultMap type="member" id="memberMap">
     <id column="MNO" property="MNO"/>
   </resultMap>
-     
+      
   <select id="selectList" resultMap="memberMap" parameterType="map">
     select MNO,MNM,tel,email 
     from bit_membs
