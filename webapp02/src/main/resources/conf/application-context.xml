@@ -9,7 +9,7 @@
 
     <!-- 특정 자바 패키지를 뒤져서 @Component 가 붙은 클래스를 찾아,
          그 클래스의 인스턴스를 생성한다. -->
-    <context:component-scan base-package="example"/>     
+    <context:component-scan base-package="bit"/>     
     
     
     <!-- Dababase 커넥션 관리 객체를 준비한다. 
@@ -42,7 +42,7 @@
 		            
 		  <!-- VO 객체의 별명을 자동으로 만들 수 있다.
 		       VO 클래스가 있는 패키지 정보를 등록하라. -->
-		  <property name="typeAliasesPackage" value="example.vo" />
+		  <property name="typeAliasesPackage" value="bit.vo" />
 		            
 		</bean>
           
