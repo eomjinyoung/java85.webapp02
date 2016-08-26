@@ -3,7 +3,8 @@ package bit.dao;
 import java.util.List;
 import java.util.Map;
 
-import example.vo.Stds;
+import bit.vo.Stds;
+
 
 public interface StdsDao {
   List<Stds> selectList(Map<String, Object> paramMap) throws Exception;
