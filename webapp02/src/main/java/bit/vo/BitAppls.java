@@ -14,6 +14,8 @@ public class BitAppls implements Serializable {
   protected String reason;
   
   
+  
+  
   public int getNo() {
     return no;
   }
