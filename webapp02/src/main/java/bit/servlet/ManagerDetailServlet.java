@@ -1,4 +1,4 @@
-package example.servlet;
+package bit.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,8 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import example.dao.ManagerDao;
-import example.vo.Manager;
+import bit.dao.ManagerDao;
+import bit.vo.Manager;
 
 
 @WebServlet("/manager/detail.do")

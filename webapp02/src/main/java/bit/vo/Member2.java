@@ -4,7 +4,7 @@
  * => 또 다른 말로 "데이터 전송 용으로 사용하는 객체(DTO; Data Transfer Object)"라 부른다.
  * => 용어 정리: VO == DTO == 도메인 객체 
  */
-package example.vo;
+package bit.vo;
 
 import java.io.Serializable;
 import java.sql.Date;

@@ -1,4 +1,4 @@
-package example.servlet;
+package bit.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,8 +13,8 @@ import javax.servlet.annotation.WebServlet;
 
 import org.springframework.context.ApplicationContext;
 
-import example.dao.ManagerDao;
-import example.vo.Manager;
+import bit.dao.ManagerDao;
+import bit.vo.Manager;
 
 @WebServlet("/manager/add.do")
 public class ManagerAddServlet extends GenericServlet {
