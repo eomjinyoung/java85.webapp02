@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import bit.vo.Member;
-
+ 
 
 public interface MemberDao {
   

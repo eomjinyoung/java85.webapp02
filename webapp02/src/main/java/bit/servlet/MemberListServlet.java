@@ -17,7 +17,7 @@ import org.springframework.context.ApplicationContext;
 
 import bit.dao.MemberDao;
 import bit.vo.Member;
-
+  
 
 @WebServlet("/member/list.do")
 public class MemberListServlet extends GenericServlet {
