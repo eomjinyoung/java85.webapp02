@@ -1,9 +1,9 @@
-package example.dao;
+package bit.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import example.vo.BitCours;
+import bit.vo.BitCours;
 
 public interface BitCoursDao {
   List<BitCours> selectList(Map<String,Object> paramMap) throws Exception;
