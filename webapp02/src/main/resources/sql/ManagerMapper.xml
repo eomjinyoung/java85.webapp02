@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.ManagerDao">
+  <resultMap type="manager" id="managerMap">
+    <id column="mno" property="mno"/> 
+    <result column="mnm" property="mnm"/>
+    <result column="tel" property="tel"/>
+    <result column="email" property="email"/>
+    <result column="pwd" property="pwd"/>
+    <result column="posi" property="posi"/>
+  </resultMap>
+  
+  <select id="selectList" resultMap="managerMap" parameterType="map">
+    select mno,mnm,tel,email,posi
+    from bit_membs, bit_mgrs
+    <where>
+      <if test="mnm != null">mnm like concat('%', #{mnm}, '%')</if>
+      <if test="tel != null">and tel like concat('%', #{tel}, '%')</if>
+    </where>
+    order by 
+    <choose>
+      <when test="telOrder == 'asc'">tel asc</when>
+      <when test="tel == 'desc'">tel desc</when>
+      <when test="emailOrder == 'asc'">email asc</when>
+      <when test="emailOrder == 'desc'">email desc</when>
+      <when test="mmnoOrder == 'asc'">mmnol asc</when>
+      <when test="mmnoOrder == 'desc'">mmno desc</when>
+      <when test="mnoOrder == 'asc'">mno asc</when>
+      <otherwise>mno desc</otherwise>
+    </choose>
+    limit #{startIndex}, #{length}
+  </select>
+  
+  <select id="selectOne" resultMap="managerMap" parameterType="int">
+    select mno,mnm,tel,email
+    from bit_membs
+    where mno = #{value}
+  </select>
+  
+  <select id="selectOneByPassword" resultMap="managerMap" parameterType="map">
+    select mno,mnm,tel,email,posi
+    from bit_membs, bit_mgrs 
+    where mno=#{mno} and pwd=pwd(#{pwd})
+  </select>
+  
+  <insert id="insert" parameterType="manager">
+    insert into bit_membs(mnm, tel, email, pwd)
+    values(#{mnm}, #{tel}, #{email}, password(#{pwd}))
+  </insert>
+  
+  <update id="update" parameterType="manager">
+    update bit_membs set 
+      tel=#{tel}, 
+      mnm=#{mnm} 
+    where mno=#{mno}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from bit_membs 
+    where mno=#{value}
+  </delete>
+</mapper>
