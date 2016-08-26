@@ -1,9 +1,9 @@
-package example.dao;
+package bit.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import example.vo.Manager;
+import bit.vo.Manager;
 
 public interface ManagerDao {
   List<Manager> selectList(Map<String,Object> paramMap) throws Exception;

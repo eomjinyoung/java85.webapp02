@@ -14,8 +14,7 @@
 		<result column="stat" property="statement" />
 		<result column="room" property="roomName" />
 		<result column="mgrno" property="managerNo" />
-		
-		<association property="bitMgrs"></association>
+	
 	</resultMap>
 
 	<select id="selectList" resultMap="bitCoursMap" parameterType="map">

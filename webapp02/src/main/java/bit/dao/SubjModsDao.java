@@ -3,7 +3,7 @@ package bit.dao;
 import java.util.List;
 import java.util.Map;
 
-import subj_mods.vo.SubjMod;
+import bit.vo.SubjMod;
 
 public interface SubjModsDao {
 	List<SubjMod> selectList(Map<String, Object> paramMap) throws Exception;
