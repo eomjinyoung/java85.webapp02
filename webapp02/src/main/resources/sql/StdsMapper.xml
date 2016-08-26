@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.StdsDao">
+  <resultMap type="stds" id="stdsMap">
+    <id column="SNO" property="SNO"/>
+    <result column="SLVL" property="SLVL" />
+    <result column="SCHL" property="SCHL" />
+    <result column="ED_DT" property="ED_DT" />
+    <result column="WORK" property="WORK" />
+  </resultMap>
+  
+  <select id="selectList" resultMap="stdsMap" parameterType="map"> <!-- id랑 interface 메서드명이랑 같아야한다. -->
+    SELECT SNO, MNM, TEL, EMAIL, SLVL, SCHL, ED_DT, WORK
+    FROM stds
+    LIMIT #{startIndex}, #{length}
+  </select>
+  
+  <select id="selectOne" resultMap="stdsMap" parameterType="int">
+    SELECT SNO, MNM, TEL, EMAIL, SLVL, SCHL, ED_DT, WORK
+    FROM stds
+    WHERE SNO = #{value}
+  </select>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM BIT_STDS 
+    WHERE SNO = #{value}
+  </delete>
+  
+   <!-- 
+  <insert id="insert" parameterType="stds">
+    insert into bit_membs (MNM, TEL, EMAIL, PWD)
+    values(#{MNM}, #{TEL}, #{EMAIL}, password(#{PWD}));
+    insert into bit_stds (SNO)
+    insert into bit_stds (SNO, SLVL, SCHL, ED_DT, WORK, COMP)
+    values(#{SNO}, #{SLVL}, #{SCHL}, now(), #{WORK}, #{COMP})
+  </insert>
+  
+  
+ 
+  <select id="selectOneByPassword" resultMap="stdsMap" parameterType="map">
+    SELECT SNO, SLVL, SCHL, ED_DT, WORK
+    FROM BIT_STDS
+    WHERE SNO = #{no}
+  </select>
+   
+  <update id="update" parameterType="stds">
+    update bit_stds set 
+      SLVL=#{SLVL}, 
+      SCHL=#{SCHL},
+      WORK=#{WORK} 
+    where SNO=#{no}
+  </update>
+   
+  
+  
+  
+  -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
