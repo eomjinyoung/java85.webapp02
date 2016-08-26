@@ -5,7 +5,7 @@
  * => 용어 정리: VO == DTO == 도메인 객체 
  */
 package bit.vo;
-  
+   
 import java.io.Serializable;
 import java.sql.Date;
 
