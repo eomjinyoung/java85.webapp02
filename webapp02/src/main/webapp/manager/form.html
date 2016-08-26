@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>매니저 입력폼</title>
+</head>
+<body>
+<h1>매니저 입력폼</h1>
+<form action="add.do" method="post">
+<!-- 입력폼 항목에 이름이 없으면 서버에 데이터를 보내지 않는다 
+     해결책? name 속성을 사용하여 파라미터명을 부여하라! -->
+이름: <input type="text" name="mnm"><br>
+전화:  <input type="text" name="tel"><br><br>
+이메일: <input type="text" name="email"><br>
+암호: <input type="password" name="password"><br>
+<button>등록</button>
+</form>
+</body>
+</html>

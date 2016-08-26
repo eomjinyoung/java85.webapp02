@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.MemberDao">
+  <resultMap type="member" id="memberMap">
+    <id column="MNO" property="MNO"/>
+  </resultMap>
+      
+  <select id="selectList" resultMap="memberMap" parameterType="map">
+    select MNO,MNM,tel,email 
+    from bit_membs
+    <where>
+      <if test="MNM != null">MNM like concat('%', #{MNM}, '%')</if>
+      <if test="tel != null">and tel like concat('%', #{tel}, '%')</if>
+    </where>
+    order by 
+    <choose>
+      <when test="MNMOrder == 'asc'">title asc</when>
+      <when test="MNMOrder == 'desc'">title desc</when>
+      <when test="MNOOrder == 'asc'">MNO asc</when>
+      <otherwise>MNO desc</otherwise>
+    </choose>
+    limit #{startIndex}, #{length}
+  </select>
+  
+  <select id="teacherList" resultMap="memberMap" parameterType="map">
+    SELECT BM.MNM AS MNM,
+         BM.MNO AS MNO,
+         BM.TEL AS TEL,
+         BM.EMAIL AS EMAIL
+    FROM BIT_MEMBS BM JOIN BIT_TCHS BT ON BM.MNO=BT.TNO
+    <where>
+      <if test="MNM != null">MNM like concat('%', #{MNM}, '%')</if>
+      <if test="tel != null">and tel like concat('%', #{tel}, '%')</if>
+      <if test="email != null">and email like concat('%', #{email}, '%')</if>
+    </where>
+    order by 
+    <choose>
+      <when test="MNMOrder == 'asc'">title asc</when>
+      <when test="MNMOrder == 'desc'">title desc</when>
+      <when test="MNOOrder == 'asc'">MNO asc</when>
+      <otherwise>MNO desc</otherwise>
+    </choose>
+    limit #{startIndex}, #{length}
+  </select>
+  
+  <select id="selectOne" resultMap="memberMap" parameterType="int">
+    select MNO,MNM,tel,email 
+    from bit_membs
+    where MNO = #{value}
+  </select>
+  
+  <select id="selectOneByPassword" resultMap="memberMap" parameterType="map">
+    select MNO,MNM,TEL,email 
+    from bit_membs
+    where MNO=#{MNO} and PWD=#{password}
+  </select>
+  
+  <insert id="insert" parameterType="member">
+    insert into bit_membs(MNM, TEL, email, PWD)
+    values(#{MNM}, #{TEL}, #{email}, #{PWD})
+  </insert>
+  
+  <insert id="teacherinsert" parameterType="member">
+    insert into bit_tchs(tno) 
+    values((select max(mno) from bit_membs))
+  </insert>
+  
+  <update id="update" parameterType="member">
+    update bit_membs set 
+      MNM=#{MNM}, 
+      TEL=#{TEL} ,
+      email=#{email}
+    where MNO=#{MNO}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from bit_membs
+    where MNO=#{value}
+  </delete>
+  
+  <delete id="deleteteacher" parameterType="int">
+    delete from bit_tchs 
+    where TNO=#{value}
+  </delete>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
