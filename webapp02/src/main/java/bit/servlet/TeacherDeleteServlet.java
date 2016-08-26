@@ -14,7 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import org.springframework.context.ApplicationContext;
 
 import bit.dao.MemberDao;
-  
+   
 @WebServlet("/member/teacherdelete.do")
 public class TeacherDeleteServlet extends GenericServlet {
   private static final long serialVersionUID = 1L;

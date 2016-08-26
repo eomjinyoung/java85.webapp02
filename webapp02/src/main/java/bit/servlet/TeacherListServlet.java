@@ -17,7 +17,7 @@ import org.springframework.context.ApplicationContext;
 
 import bit.dao.MemberDao;
 import bit.vo.Member;
- 
+  
 @WebServlet("/member/teacherlist.do")
 public class TeacherListServlet extends GenericServlet {
   private static final long serialVersionUID = 1L;
