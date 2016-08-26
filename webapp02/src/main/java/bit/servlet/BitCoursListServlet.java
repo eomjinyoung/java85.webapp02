@@ -1,4 +1,4 @@
-package example.servlet;
+package bit.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,8 +15,8 @@ import javax.servlet.annotation.WebServlet;
 
 import org.springframework.context.ApplicationContext;
 
-import example.dao.BitCoursDao;
-import example.vo.BitCours;
+import bit.dao.BitCoursDao;
+import bit.vo.BitCours;
 
 @WebServlet("/bit_cours/list.do")
 public class BitCoursListServlet extends GenericServlet {

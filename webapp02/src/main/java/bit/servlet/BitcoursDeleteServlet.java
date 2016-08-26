@@ -1,4 +1,4 @@
-package example.servlet;
+package bit.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +13,7 @@ import javax.servlet.annotation.WebServlet;
 
 import org.springframework.context.ApplicationContext;
 
-import example.dao.BitCoursDao;
+import bit.dao.BitCoursDao;
 
 @WebServlet("/bit_cours/delete.do")
 public class BitcoursDeleteServlet extends GenericServlet {

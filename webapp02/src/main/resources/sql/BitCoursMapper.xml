@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="example.dao.BitCoursDao">
+<mapper namespace="bit.dao.BitCoursDao">
 
-	<resultMap type="example.vo.BitCours" id="bitCoursMap">
+	<resultMap type="bit.vo.BitCours" id="bitCoursMap">
 		<id column="cono" property="courseNo" />
 		<result column="titl" property="title" />
 		<result column="conts" property="contents" />

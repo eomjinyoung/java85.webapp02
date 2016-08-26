@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="UTF-8">
+<title>회원 등록</title>
+</head>
+<body>
+  <h1>회원 등록</h1>
+  <form action="memberadd.do" method="post">
+  <!-- 입력폼 항목에 이름이 없으면 서버에 데이터를 보내지 않는다. 
+       해결책? name 속성을 사용하여 파라미터명을 부여하라!-->
+이    름:   <input type="text" name="MNM"><br>
+전화번호:   <input type="text" name="tel"><br>
+이 메 일:   <input type="text" name="email"><br>
+암    호:   <input type="password" name="PWD"><br>
+    <button>등록</button>
+  </form>
+</body>
+</html>
