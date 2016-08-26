@@ -14,5 +14,7 @@ public interface BitApplsDao {
   int update(BitAppls bitAppls) throws Exception;
   int delete(int no) throws Exception;
   
+  
+  
 
 }
