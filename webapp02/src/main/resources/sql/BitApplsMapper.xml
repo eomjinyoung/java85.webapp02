@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.BitApplsDao">
+  <resultMap type="bitAppls" id="bitApplsMap">
+    <id column="sno" property="studentNo"/> 
+    <id column="cono" property="courseNo"/> 
+    <result column="cre_dt" property="createdDate"/>
+    <result column="stat" property="status"/>
+    <result column="resn" property="reason"/>
+  </resultMap>
+  
+  <select id="selectList" resultMap="bitApplsMap" parameterType="map">
+    select sno,cono,cre_dt,stat,resn
+    from bit_appls
+   <!--  <where>
+      <if test="title != null">title like concat('%', #{title}, '%')</if>
+      <if test="writer != null">and writer like concat('%', #{writer}, '%')</if>
+    </where>
+    order by 
+    <choose>
+      <when test="titleOrder == 'asc'">title asc</when>
+      <when test="titleOrder == 'desc'">title desc</when>
+      <when test="writerOrder == 'asc'">writer asc</when>
+      <when test="writerOrder == 'desc'">writer desc</when>
+      <when test="viewCountOrder == 'asc'">vw_cnt asc</when>
+      <when test="viewCountOrder == 'desc'">vw_cnt desc</when>
+      <when test="noOrder == 'asc'">no asc</when>
+      <otherwise>no desc</otherwise>
+    </choose>
+    limit #{startIndex}, #{length} -->
+  </select>
+  
+  <select id="selectOne" resultMap="bitApplsMap" parameterType="int">
+    select sno,cono,cre_dt,stat,resn
+    from bit_appls
+    where no = #{value}
+  </select>
+  
+  <insert id="insert" parameterType="bitAppls">
+    insert into bit_appls(sno, cono,cre_dt)
+    values(#{sno}, #{cono}, now())
+  </insert>
+  
+  <update id="update" parameterType="bitAppls">
+    update bit_appls set 
+      sno=#{sno}, 
+      cono=#{cono} 
+    where no=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from bit_appls 
+    where no=#{value}
+  </delete>
+</mapper>
